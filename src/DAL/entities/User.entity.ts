@@ -35,6 +35,9 @@ export class User extends CommonEntity {
 	@Column({ type: "varchar", nullable: false })
 	station?: string;
 
+	@Column({ type: "int", nullable: false, unique:true })
+	customer_code?: number;
+
 	@Column({ type: "date", nullable: false })
 	birthdate?: Date;
 

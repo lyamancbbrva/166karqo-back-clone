@@ -23,6 +23,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 		legal_entity,
 	} = req.body;
 
+	
 	const data = new RegisterDto();
 	data.name = name;
 	data.surname = surname;
@@ -65,6 +66,8 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 				})
 			);
 		}
+		const randomCode = Math.floor(100000 + Math.random()*900000)
+
 		const hashedPass = await bcrypt.hash(password, 10);
 		await User.create({
 			name,
@@ -79,6 +82,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 			serial_number,
 			birthdate,
 			tax_id,
+			customer_code: randomCode
 		}).save();
 		return next(
 			res.status(201).json({

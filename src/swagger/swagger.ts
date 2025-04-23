@@ -69,6 +69,94 @@ export const swaggerSpec: OpenAPIV3.Document = {
           },
         },
       },
+      "/api/v1/package/create": {
+        post: {
+          summary: "Package yaratmaq",
+          tags: ["Package"],
+          security: [
+            {
+              bearerAuth: []
+            }
+          ],
+          requestBody: {
+            required: true,
+            content: {
+              "application/json": {
+                schema: {
+                  type: "object",
+                  properties: {
+                    product_name: {type: "string"},
+                    amount: {type: "string"},
+                    following_number: {type: "number"},
+                    delivery: {type: "string"},
+                    weight: {type: "string"},
+                    store: {type: "string"},
+                  },
+                },
+              },
+              
+            },
+          },
+          responses: {
+            201: { description: "Qeydiyyat tamamlandı" },
+            400: { description: "Yanlış və ya əskik məlumat" },
+          },
+        },
+      },
+      "/api/v1/package/all": {
+        get: {
+          summary: "Bütün packageleri gör",
+          tags: ["Package"],
+          security: [
+            {
+              bearerAuth: []
+            }
+          ],
+          responses: {
+            201: { description: "Qeydiyyat tamamlandı" },
+            400: { description: "Yanlış və ya əskik məlumat" },
+          },
+        },
+      },
+      "/api/v1/package/change-status/{id}": {
+      put: {
+        summary: "Change status of package",
+        tags: ["Package"],
+        security: [
+          {
+            bearerAuth: [],
+          },
+        ],
+        parameters: [
+          {
+            name: "id",
+            in: "path",
+            required: true,
+            description: "Package ID",
+            schema: {
+              type: "number",
+            },
+          },
+        ],
+        requestBody: {
+          required: true,
+          content: {
+            "application/json": {
+              schema: {
+                type: "object",
+                properties: {
+                  status: { type: "string" },
+                },
+              },
+            },
+          },
+        },
+        responses: {
+          200: { description: "Kateqoriya silindi" },
+          404: { description: "Kateqoriya tapılmadı" },
+        },
+      },
+    },
     },
     components: {
       securitySchemes:{

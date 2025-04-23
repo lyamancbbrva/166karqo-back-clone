@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne } from "typeorm";
 import { CommonEntity } from "./Common.entity";
 import { User } from "./User.entity";
+import { EStatus } from "../../Core/app/enums";
 
 @Entity('packages')
 export class Package extends CommonEntity {
@@ -22,8 +23,8 @@ export class Package extends CommonEntity {
     @Column({type:'varchar', nullable: false})
 	delivery?: string;
 
-    @Column({type:'varchar', nullable: false})
-	status?: string;
+    @Column({type:'enum', enum: EStatus, default: EStatus.HAMISI})
+	status?: EStatus;
 
 	@ManyToOne(() => User, (user) => user.packages)
 	user?: User;
