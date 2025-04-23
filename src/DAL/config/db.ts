@@ -1,5 +1,8 @@
 import { DataSource } from "typeorm";
-import { AppConfig } from "../../conts";
+import { AppConfig } from "../../consts";
+import { User } from "../entities/User.entity";
+import { Order } from "../entities/Order.entity";
+import { Package } from "../entities/Package.entity";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -8,7 +11,7 @@ export const AppDataSource = new DataSource({
   username: AppConfig.DB_USERNAME,
   password: AppConfig.DB_PASSWORD,
   database: AppConfig.DB_NAME,
-  entities: ["./../../DAL/entities/*.ts"],
+  entities: [User, Package, Order],
   subscribers: [],
   migrations: [],
   logging: false,
