@@ -1,7 +1,7 @@
 import { Column, Entity, OneToMany } from "typeorm";
 import { CommonEntity } from "./Common.entity";
 import { ENationality, ESex, EUserRole } from "../../Core/app/enums";
-import { Package } from "./Package.entity";
+import { Packagee } from "./Package.entity";
 
 @Entity("users")
 export class User extends CommonEntity {
@@ -58,6 +58,6 @@ export class User extends CommonEntity {
 	@Column({ type: "enum", enum: EUserRole, default: EUserRole.CUSTOMER })
 	role?: EUserRole;
 
-	@OneToMany(() => Package, (packagee) => packagee.user)
-	packages?: Package[];
+	@OneToMany(() => Packagee, (packagee) => packagee.user)
+	packages?: Packagee[];
 }

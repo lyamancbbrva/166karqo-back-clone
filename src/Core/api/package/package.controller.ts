@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from "express"
 import { PackageDto } from "./package.dto"
 import { validate } from "class-validator"
-import { errorMessages } from "../../consts"
-import { Package } from "../../DAL/entities/Package.entity"
-import { AuthRequest } from "../../types"
+import { AuthRequest } from "../../../types"
+import { errorMessages } from "../../../consts"
+import {  Packagee } from "../../../DAL/entities/Package.entity"
 
 const create = async (req:AuthRequest, res:Response, next:NextFunction) => {
     const {following_number, product_name, store, amount, weight, delivery} = req.body
@@ -29,13 +29,13 @@ const create = async (req:AuthRequest, res:Response, next:NextFunction) => {
             );
         }
         try {
-            const existPackage = await Package.findOne({where: {following_number}})
+            const existPackage = await Packagee.findOne({where: {following_number}})
             if (existPackage) {
                 return next(res.status(409).json({
                     message: "Package already exist"
                 }))
             }
-            const newPackage = await Package.create({
+            const newPackage = await Packagee.create({
                 amount,
                 product_name, 
                 store, 
@@ -61,7 +61,7 @@ const create = async (req:AuthRequest, res:Response, next:NextFunction) => {
 const get = async (req:AuthRequest, res:Response, next:NextFunction) => {
         try {
             const id = req.user?.id
-            const packages = await Package.find({where: {user: req.user}, })
+            const packages = await Packagee.find({where: {user: req.user}, })
             return next(res.json({
                 data: packages
             }))
@@ -77,7 +77,7 @@ const changeStatus = async (req:AuthRequest, res:Response, next:NextFunction) =>
     const {status} = req.body
     const {id} = req.params
     try {
-        const packagee = await Package.findOne({where: {id}, })
+        const packagee = await Packagee.findOne({where: {id}, })
         if (!packagee) {
             return next(res.status(404).json({
                 message: errorMessages[404]
