@@ -5,7 +5,7 @@ import { orderRouter } from "../api/order/order.routes";
 import { useAuth } from "../middlewares/auth.middleware";
 import { branchRouter } from "../api/branch/branch.routes";
 import { recipeRouter } from "../api/recipe/recipe.routes";
-import { newsRouter } from "../api/news/news.dto";
+import { newsRouter } from "../api/news/news.routes";
 
 export const v1Router = Router()
 

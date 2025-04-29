@@ -1,11 +1,9 @@
-import { Router } from "express";
-import { NewsController } from "./news.controller";
-import { roleCheck, useAuth } from "../../middlewares/auth.middleware";
+import { IsDefined, Matches } from "class-validator";
 
-export const newsRouter = Router();
-const controller = NewsController()
+export class NewsDto {
+    @IsDefined({ message: "Tittle is required" })
+    tittle?: string;
 
-newsRouter.post('/create', useAuth, roleCheck('admin'), controller.create)
-newsRouter.put('/update/:id',useAuth, roleCheck('admin'), controller.create)
-newsRouter.delete('/delete/:id',useAuth, roleCheck('admin'), controller.create)
-newsRouter.get('/all',  controller.create)
+    description?: string;
+
+}

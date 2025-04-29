@@ -5,12 +5,12 @@ import { Packagee } from "./Package.entity";
 @Entity('news')
 export class News extends CommonEntity{
     @Column({type: 'varchar', nullable: false})
-    title?: string;
+    tittle?: string;
 
     @Column()
     img_url?: string;
 
     @Column({type: 'varchar'})
-    desciption?: string;
+    description?: string;
 
 }
