@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { OrderController } from "./order.controller";
-import { useAuth } from "../../middlewares/auth.middleware";
+import { roleCheck, useAuth } from "../../middlewares/auth.middleware";
 
 export const orderRouter = Router()
 const controller  = OrderController()
 
-orderRouter.post('/create', useAuth, controller.create)
+orderRouter.post('/create', useAuth, roleCheck(['admin']), controller.create)
+orderRouter.get('/all', useAuth, controller.get)

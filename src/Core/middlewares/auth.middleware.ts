@@ -33,7 +33,7 @@ export const useAuth = async (req:AuthRequest, res:Response, next:NextFunction) 
         return  next(res.status(401).json({ message: errorMessages[401] }))
     }
 }
-export const roleCheck = (role: string) => {
+export const roleCheck = (role: string[]) => {
 
     return (req: AuthRequest, res:Response, next: NextFunction) => {
         const userRole = req.user?.role

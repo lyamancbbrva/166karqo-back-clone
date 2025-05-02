@@ -26,7 +26,7 @@ const create = async (req:Request, res:Response, next:NextFunction) => {
         }
         try {
             const new_branch = await Branch.create({
-                address, phone,  work_time
+                address, phone, work_time
             }).save()
 
             return next(res.status(201).json({

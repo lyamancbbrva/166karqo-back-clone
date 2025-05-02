@@ -54,6 +54,9 @@ const create = async (req: AuthRequest, res:Response, next:NextFunction) => {
     }
     
 }
+const get = async (req: AuthRequest, res:Response, next:NextFunction) => {
+
+}
 export const OrderController = () => ({
-    create
+    create, get
 })

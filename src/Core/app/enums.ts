@@ -1,6 +1,7 @@
 export enum EUserRole{
     ADMIN="admin",
-    CUSTOMER="customer"
+    CUSTOMER="customer",
+    COURIER = 'courier'
 }
 export enum ENationality{
     AZERBAIJAN="azerbaijan",
@@ -11,7 +12,6 @@ export enum ESex{
     WOMAN="woman"
 }
 export enum EStatus{
-    HAMISI = "Hamısı",
     ONCEDEN_BEYAN_EDILIB = "Öncədən bəyan edilib",
     BEYANNAMESIZ = "Bəyannaməsiz",
     XARICDEKI_ANBARDA = "Xaricdəki anbarda",
@@ -31,4 +31,14 @@ export enum EStatus{
     TEMU_SIFARIS_VERILDI = "Temu sifariş verildi",
     TRANZITTEDIR = "Tranzittedir",
     GERI_QAYTARILMAYA_HAZIR = "Geri qaytarılmaya hazır"
+}
+export enum ECountry{
+    TURKEY  = 'turkey',
+    USA = 'usa',
+    ENGLAND = 'england'
+}
+export enum ECurrency{
+    USD = 'USD',
+    EUR = 'EUR',
+    TRY = 'TRY'
 }

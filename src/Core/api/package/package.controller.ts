@@ -4,6 +4,7 @@ import { validate } from "class-validator"
 import { AuthRequest } from "../../../types"
 import { errorMessages } from "../../../consts"
 import {  Packagee } from "../../../DAL/entities/Package.entity"
+import { EStatus } from "../../app/enums"
 
 const create = async (req:AuthRequest, res:Response, next:NextFunction) => {
     const {following_number, product_name, store, amount, weight, delivery} = req.body
@@ -83,7 +84,7 @@ const changeStatus = async (req:AuthRequest, res:Response, next:NextFunction) =>
                 message: errorMessages[404]
             }))
         }
-         packagee.status = status
+        packagee.status = status
         const newPackage = await packagee.save()
          return next(res.json({
             message: "Package status updated succesfully",

@@ -1,18 +1,22 @@
 import { Column, Entity, OneToMany } from "typeorm";
 import { CommonEntity } from "./Common.entity";
-import { Packagee } from "./Package.entity";
+import { ECountry, ECurrency } from "../../Core/app/enums";
 
 @Entity('recipes')
 export class Recipe extends CommonEntity{
-    @Column({type: 'varchar', nullable: false})
-    country?: string;
+    @Column({type: 'enum', enum: ECountry})
+    country?: ECountry;
 
     @Column({type: 'varchar', nullable: false})
     weight?: string;
 
-    @Column({type: 'varchar', nullable: false})
-    manat?: string;
+    @Column({type: 'enum', enum:ECurrency})
+    currency?: ECurrency;
 
     @Column({type: 'varchar', nullable: false})
-    phone?: string; 
+    price_manat?: string;
+
+    @Column({type: 'varchar', nullable: false})
+    price_foreign?: string;
+
 }

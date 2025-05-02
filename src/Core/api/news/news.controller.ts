@@ -45,6 +45,7 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 			})
 		);
 	} catch (error) {
+		console.log(error)
 		return next(
 			res.status(500).json({
 				message: errorMessages[500],
@@ -54,7 +55,6 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
 	}
 };
 const deletee = async (req: Request, res: Response, next: NextFunction) => {
-	const { tittle, description } = req.body;
 	const { id } = req.params;
 
 	try {
@@ -84,6 +84,7 @@ const deletee = async (req: Request, res: Response, next: NextFunction) => {
 };
 const update = async (req: Request, res: Response, next: NextFunction) => {
 	const { tittle, description } = req.body;
+	console.log(tittle)
 	const { id } = req.params;
 	const img = req.file;
 

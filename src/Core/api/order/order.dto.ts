@@ -10,7 +10,7 @@ export class OrderDto {
 	@IsDefined({ message: "adress is reqiured" })
 	addess?: string;
 
-	@Matches(/^[0-9]{7}$/, {
+	@Matches(/^\+994(50|51|55|70|77|99)[0-9]{7}$/, {
 		message: "Phone is not correct format",
 	})
 	@IsDefined({ message: "phone is reqiured" })

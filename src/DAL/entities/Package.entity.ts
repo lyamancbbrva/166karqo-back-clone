@@ -24,7 +24,7 @@ export class Packagee extends CommonEntity {
     @Column({type:'varchar', nullable: false})
 	delivery?: string;
 
-    @Column({type:'enum', enum: EStatus, default: EStatus.HAMISI})
+    @Column({type:'enum', enum: EStatus, default: EStatus.BEYANNAMESIZ})
 	status?: EStatus;
 
 	@ManyToOne(() => User, (user) => user.packages)

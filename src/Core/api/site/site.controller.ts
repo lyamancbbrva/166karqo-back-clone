@@ -52,7 +52,6 @@ const create = async (req: Request, res: Response, next: NextFunction) => {
     }
 };
 const deletee = async (req: Request, res: Response, next: NextFunction) => {
-    const { tittle, description } = req.body;
     const { id } = req.params;
 
     try {
